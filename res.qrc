@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>Images/Plan de travail 1.jpg</file>
+    </qresource>
+    <qresource prefix="/soundEffects">
+        <file>SoundEffect/donnerre2.mp3</file>
+    </qresource>
+</RCC>
