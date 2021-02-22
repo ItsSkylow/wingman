@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Story</class>
+ <widget class="QMainWindow" name="Story">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -22,47 +22,54 @@
     <height>810</height>
    </size>
   </property>
-  <property name="font">
-   <font>
-    <pointsize>145</pointsize>
-   </font>
-  </property>
   <property name="windowTitle">
-   <string>Sahri, l'enfant du désert</string>
+   <string>Histoire</string>
   </property>
   <property name="windowIcon">
    <iconset resource="res.qrc">
-    <normaloff>:/images/Images/SahriColor.png</normaloff>:/images/Images/SahriColor.png</iconset>
+    <normaloff>:/images/Images/SahriColor.ico</normaloff>:/images/Images/SahriColor.ico</iconset>
   </property>
-  <property name="styleSheet">
-   <string notr="true">background: url(&quot;:images/Images/Plan de travail 1&quot;);</string>
-  </property>
-  <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="DebuterVoyage">
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>560</y>
-      <width>261</width>
-      <height>91</height>
+      <x>20</x>
+      <y>699</y>
+      <width>71</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Impact</family>
-      <pointsize>15</pointsize>
+      <family>Webdings</family>
+      <pointsize>30</pointsize>
      </font>
     </property>
-    <property name="styleSheet">
-     <string notr="true">color: white;</string>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>1350</x>
+      <y>700</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Webdings</family>
+      <pointsize>30</pointsize>
+     </font>
     </property>
     <property name="text">
-     <string>Débuter le Voyage</string>
+     <string>4</string>
     </property>
    </widget>
   </widget>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="res.qrc"/>
  </resources>
