@@ -29,7 +29,10 @@
    <iconset resource="res.qrc">
     <normaloff>:/images/Images/SahriColor.ico</normaloff>:/images/Images/SahriColor.ico</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="storyBackground">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
