@@ -8,4 +8,7 @@
     <qresource prefix="/soundEffects">
         <file>SoundEffect/donnerre2.mp3</file>
     </qresource>
+    <qresource prefix="/fonts">
+        <file>Font/kareem_mubarak/KareemMubarak.ttf</file>
+    </qresource>
 </RCC>
