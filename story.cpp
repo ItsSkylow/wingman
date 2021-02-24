@@ -39,6 +39,7 @@ void Story::thirdScene(){
     this->createTimer(4,"Avant de s'évaporé l'éclair prononça ces mots :",true);
     this->createTimer(5,"\"Ton autre il te faut trouver, afin que l'équilibre a nouveau soit forgé\"",true);
     this->createTimer(6,"\"Depuis ce jour nous errons elle et moi à sa recherche.\"",true);
+
 }
 
 void Story::fourthScene(){
