@@ -173,9 +173,10 @@ QTimer* Story::createTimer(double nb,const char* toDisplay, bool addToMapTimer )
     return mapTimer[nb];
 }
 
-//QTimer* Story::createTimer(double nb,const char* toDisplay, double additionalTime ){
-//    mapTimer[nb]=this->createTimer(nb + additionalTime,toDisplay);
-//}
+QTimer* Story::createTimer(double nb,const char* toDisplay, double additionalTime ){
+    mapTimer[nb]=this->createTimer(nb + additionalTime,toDisplay);
+    return mapTimer[nb];
+}
 
 void Story::clearMapTimer(){
     for (std::map<int, QTimer*>::iterator it = mapTimer.begin(); it != mapTimer.end(); ++it)
