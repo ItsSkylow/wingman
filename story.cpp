@@ -8,7 +8,7 @@
 
 
 void Story::firstScene(){
-    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/Plan de travail 1.jpg')}");
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/SahriScene1.jpg')}");
     this->displayText("Il etait une fois, dans une contree eloigne, a une epoque que le temps a effacer de la memoire des hommes...");
     this->clearMapTimer();
     this->createTimer(1,"un jeune garçon du nom de Sahri.",true);
