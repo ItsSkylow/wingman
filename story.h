@@ -28,6 +28,8 @@ private slots:
     void firstScene();
     void secondScene();
     void thirdScene();
+    void fourthScene();
+    void fifthScene();
     QTimer* createTimer(double nb,const char* toDisplay );
     QTimer* createTimer(double nb,const char* toDisplay, bool addToMapTimer );
     void clearMapTimer();

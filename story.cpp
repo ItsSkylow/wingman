@@ -35,11 +35,32 @@ void Story::thirdScene(){
     this->clearMapTimer();
     this->createTimer(1,"Mais un jour funeste, un éclair vint déchirer les cieux",true);
     this->createTimer(2,"\"Il rebondit sur tous ceux que nous avons pu connaitre avant de s'arrêter devant le visage de ma fille et de s'évaporer en brume.\"",true);
-    this->createTimer(3,"\"Qui êtes vous ?\" interrogea le jeune homme ?",true);
-    this->createTimer(4,"\"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu.\"",true);
-    this->createTimer(5,"\"Et toi qui es tu ?\" rétorqua Gaïen.",true);
-    this->createTimer(6,"\"Je me nomme Sahri, je suis seul sur ces terres depuis si longtemps que je ne puis me rappeler le dernier visage que j'ai pu contempler.\"",true);
-    this->createTimer(7,"\"Mais pourquoi le visage de votre fille est-il couvert par la brume ?\".",true);
+    this->createTimer(3,"\"Depuis ce jour, plus jamais il ne la quitta.\"",true);
+    this->createTimer(4,"Avant de s'évaporé l'éclair prononça ces mots :",true);
+    this->createTimer(5,"\"Ton autre il te faut trouver, afin que l'équilibre a nouveau soit forgé\"",true);
+    this->createTimer(6,"\"Depuis ce jour nous errons elle et moi à sa recherche.\"",true);
+}
+
+void Story::fourthScene(){
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
+    this->displayText("Le jeune Sahri s'approcha alors, comme si sa destinée s'accomplissait");
+    this->clearMapTimer();
+    this->createTimer(1,"Il rapprocha sa main du visage brumeux de la jeune fille.",true);
+    this->createTimer(2,"Jusqu'à toucher les gouttes de brume en suspension sur son visage.",true);
+    this->createTimer(3,"Alors,  la brume vint alors s'arracher du visage de la jeune princesse et heurta tout sur son passage avec violence ",true);
+    this->createTimer(4,"Des éclaires jaillirent du nébuleux tourment faisant émergé du sol le peuple de Gaïen et Elëia.",true);
+    this->createTimer(5,"La tempête enroba les jeunes enfants",true);
+    this->createTimer(6,"puis, dans un ultime tremblement",true);
+    this->createTimer(7,"elle vint déposer d'innombrables fines particules sur le sol",true);
+    this->createTimer(8,"On raconte qu'aujourd'hui encore, le vent élancé par ces deux âmes vient encore balayés les grains de cette terre.",true);
+}
+
+void Story::fifthScene(){
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
+    this->displayText("Ainsi le sable et le vent, séparés par le temps et l'oubli étaient réunis.");
+    this->clearMapTimer();
+    this->createTimer(1,"Ainsi naquit le grand désert du Sahara.",true);
+
 }
 
 Story::Story(QWidget *parent) :
@@ -67,6 +88,8 @@ Story::Story(QWidget *parent) :
     mapStory[0]= &Story::firstScene;
     mapStory[1]= &Story::secondScene;
     mapStory[2]= &Story::thirdScene;
+    mapStory[3]= &Story::fourthScene;
+    mapStory[4]= &Story::fifthScene;
 
     //Parametrage du spinner
     ui->spinPage->setMinimum(1);
