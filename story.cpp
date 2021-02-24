@@ -9,7 +9,7 @@
 
 
 void Story::firstScene(){
-    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/Plan de travail 1.jpg')}");
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/SahriScene1.jpg')}");
     this->displayText("Il etait une fois, dans une contree eloigne, a une epoque que le temps a effacer de la memoire des hommes...");
     this->clearMapTimer();
     this->createTimer(1,"un jeune garçon du nom de Sahri.",true);
@@ -45,6 +45,7 @@ void Story::thirdScene(){
     this->createTimer(4,"Avant de s'évaporé l'éclair prononça ces mots :",true);
     this->createTimer(5,"\"Ton autre il te faut trouver, afin que l'équilibre a nouveau soit forgé\"",true);
     this->createTimer(6,"\"Depuis ce jour nous errons elle et moi à sa recherche.\"",true);
+
 }
 
 void Story::fourthScene(){
@@ -190,14 +191,15 @@ QTimer* Story::createTimer(double nb,const char* toDisplay, bool addToMapTimer )
     return mapTimer[nb];
 }
 
+QTimer* Story::createTimer(double nb,const char* toDisplay, double additionalTime ){
+    mapTimer[nb]=this->createTimer(nb + additionalTime,toDisplay);
+    return mapTimer[nb];
+}
+
 QTimer* Story::createTimer(double nb, CImmCompoundEffect * effect, bool addToMapTimer ){
     mapTimer[nb]=this->createTimer(nb,effect);
     return mapTimer[nb];
 }
-
-//QTimer* Story::createTimer(double nb,const char* toDisplay, double additionalTime ){
-//    mapTimer[nb]=this->createTimer(nb + additionalTime,toDisplay);
-//}
 
 void Story::clearMapTimer(){
     for (std::map<int, QTimer*>::iterator it = mapTimer.begin(); it != mapTimer.end(); ++it)
