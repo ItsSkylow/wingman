@@ -19,22 +19,12 @@ public:
     GestionHaptique(Story *fen);
     ~GestionHaptique();
 
-    QPoint GetCentreEnclosRelatif() const;
-    CImmCompoundEffect *GetLigneIS() const;
-    CImmSpring *GetRessort() const;
-    CImmSpring *GetRessortIS() const;
+    CImmCompoundEffect *GetHeartBoomMesCouilles() const;
     CImmProject *GetProjet() const;
-    CImmEnclosure *GetEnclos() const;
-    CImmTexture *GetTextureIS() const;
 private:
     CImmMouse *mSouris;
-    CImmSpring* mRessort;
-    CImmEnclosure* mEnclos;
-    QPoint mCentreEnclosRelatif;//coordonnées relatives par rapport à la fenêtre
     CImmProject  *mProjet;
-    CImmSpring	*mRessortIS;
-    CImmTexture	*mTextureIS;
-    CImmCompoundEffect	*mLigne;
+    CImmCompoundEffect	*mHeartBoomMesCouilles;
     Story *mFenetre;
 };
 

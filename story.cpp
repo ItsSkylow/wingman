@@ -5,6 +5,7 @@
 #include <QFontDatabase>
 #include <QThread>
 #include <QTimer>
+#include <QDebug>
 
 
 void Story::firstScene(){
@@ -17,16 +18,21 @@ void Story::firstScene(){
 }
 
 void Story::secondScene(){
-    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert.png')}");
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert brume.png')}");
     this->displayText("Un jour, alors que tout était calme, le jeune Sahri rencontra un homme tout de blanc vêtu. ");
     this->clearMapTimer();
     this->createTimer(1,"A ses côtés se tenait une jeune fille, dont le visage était masqué par une épaisse brume.",true);
     this->createTimer(2,"Le jeune Sahri s’arrêta alors, contempla la jeune fille si mystérieuse et sentit soudain sa poitrine se déchirer.",true);
-    this->createTimer(3,"\"Qui êtes vous ?\" interrogea le jeune homme ?",true);
-    this->createTimer(4,"\"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu.\"",true);
-    this->createTimer(5,"\"Et toi qui es tu ?\" rétorqua Gaïen.",true);
-    this->createTimer(6,"\"Je me nomme Sahri, je suis seul sur ces terres depuis si longtemps que je ne puis me rappeler le dernier visage que j'ai pu contempler.\"",true);
-    this->createTimer(7,"\"Mais pourquoi le visage de votre fille est-il couvert par la brume ?\".",true);
+
+    if (mHaptique->GetHeartBoomMesCouilles()) {
+        qDebug()<<"L'effet battement de coeur est bon !";
+        this->createTimer(3,mHaptique->GetHeartBoomMesCouilles(),true);
+    }
+    this->createTimer(4,"\"Qui êtes vous ?\" interrogea le jeune homme ?",true);
+    this->createTimer(5,"\"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu.\"",true);
+    this->createTimer(6,"\"Et toi qui es tu ?\" rétorqua Gaïen.",true);
+    this->createTimer(7,"\"Je me nomme Sahri, je suis seul sur ces terres depuis si longtemps que je ne puis me rappeler le dernier visage que j'ai pu contempler.\"",true);
+    this->createTimer(8,"\"Mais pourquoi le visage de votre fille est-il couvert par la brume ?\".",true);
 }
 
 void Story::thirdScene(){
@@ -43,7 +49,7 @@ void Story::thirdScene(){
 }
 
 void Story::fourthScene(){
-    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert.png')}");
     this->displayText("Le jeune Sahri s'approcha alors, comme si sa destinée s'accomplissait");
     this->clearMapTimer();
     this->createTimer(1,"Il rapprocha sa main du visage brumeux de la jeune fille.",true);
@@ -57,7 +63,7 @@ void Story::fourthScene(){
 }
 
 void Story::fifthScene(){
-    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert vide.png')}");
     this->displayText("Ainsi le sable et le vent, séparés par le temps et l'oubli étaient réunis.");
     this->clearMapTimer();
     this->createTimer(1,"Ainsi naquit le grand désert du Sahara.",true);
@@ -169,6 +175,17 @@ QTimer* Story::createTimer(double nb,const char* toDisplay ){
     return m_myLongTimer;
 }
 
+QTimer* Story::createTimer(double nb, CImmCompoundEffect * effect){
+    QTimer *m_myLongTimer = new QTimer(this);
+    m_myLongTimer->setInterval(this->delayPrintText * nb);
+    m_myLongTimer->setSingleShot(true);
+    connect(m_myLongTimer, &QTimer::timeout, [this,effect] {
+        effect->Start();
+    });
+    m_myLongTimer->start();
+    return m_myLongTimer;
+}
+
 QTimer* Story::createTimer(double nb,const char* toDisplay, bool addToMapTimer ){
     mapTimer[nb]=this->createTimer(nb,toDisplay);
     return mapTimer[nb];
@@ -176,6 +193,11 @@ QTimer* Story::createTimer(double nb,const char* toDisplay, bool addToMapTimer )
 
 QTimer* Story::createTimer(double nb,const char* toDisplay, double additionalTime ){
     mapTimer[nb]=this->createTimer(nb + additionalTime,toDisplay);
+    return mapTimer[nb];
+}
+
+QTimer* Story::createTimer(double nb, CImmCompoundEffect * effect, bool addToMapTimer ){
+    mapTimer[nb]=this->createTimer(nb,effect);
     return mapTimer[nb];
 }
 
