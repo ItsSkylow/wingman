@@ -17,7 +17,7 @@ void Story::firstScene(){
 }
 
 void Story::secondScene(){
-    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert.png')}");
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert brume.png')}");
     this->displayText("Un jour, alors que tout était calme, le jeune Sahri rencontra un homme tout de blanc vêtu. ");
     this->clearMapTimer();
     this->createTimer(1,"A ses côtés se tenait une jeune fille, dont le visage était masqué par une épaisse brume.",true);
@@ -42,7 +42,7 @@ void Story::thirdScene(){
 }
 
 void Story::fourthScene(){
-    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert.png')}");
     this->displayText("Le jeune Sahri s'approcha alors, comme si sa destinée s'accomplissait");
     this->clearMapTimer();
     this->createTimer(1,"Il rapprocha sa main du visage brumeux de la jeune fille.",true);
@@ -56,7 +56,7 @@ void Story::fourthScene(){
 }
 
 void Story::fifthScene(){
-    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert vide.png')}");
     this->displayText("Ainsi le sable et le vent, séparés par le temps et l'oubli étaient réunis.");
     this->clearMapTimer();
     this->createTimer(1,"Ainsi naquit le grand désert du Sahara.",true);

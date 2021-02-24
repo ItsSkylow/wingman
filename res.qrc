@@ -5,6 +5,8 @@
         <file>Images/SahriColor.png</file>
         <file>Images/CitySahri.jpg</file>
         <file>Images/desert.png</file>
+        <file>Images/desert brume.png</file>
+        <file>Images/desert vide.png</file>
     </qresource>
     <qresource prefix="/soundEffects">
         <file>SoundEffect/donnerre2.mp3</file>
