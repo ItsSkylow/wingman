@@ -31,7 +31,9 @@ private slots:
     void fourthScene();
     void fifthScene();
     QTimer* createTimer(double nb,const char* toDisplay );
+    QTimer* createTimer(double nb,CImmCompoundEffect * effect );
     QTimer* createTimer(double nb,const char* toDisplay, bool addToMapTimer );
+    QTimer* createTimer(double nb,CImmCompoundEffect * effect, bool addToMapTimer );
     void clearMapTimer();
 
     void on_spinPage_editingFinished();

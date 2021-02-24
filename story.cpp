@@ -5,6 +5,7 @@
 #include <QFontDatabase>
 #include <QThread>
 #include <QTimer>
+#include <QDebug>
 
 
 void Story::firstScene(){
@@ -22,11 +23,16 @@ void Story::secondScene(){
     this->clearMapTimer();
     this->createTimer(1,"A ses côtés se tenait une jeune fille, dont le visage était masqué par une épaisse brume.",true);
     this->createTimer(2,"Le jeune Sahri s’arrêta alors, contempla la jeune fille si mystérieuse et sentit soudain sa poitrine se déchirer.",true);
-    this->createTimer(3,"\"Qui êtes vous ?\" interrogea le jeune homme ?",true);
-    this->createTimer(4,"\"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu.\"",true);
-    this->createTimer(5,"\"Et toi qui es tu ?\" rétorqua Gaïen.",true);
-    this->createTimer(6,"\"Je me nomme Sahri, je suis seul sur ces terres depuis si longtemps que je ne puis me rappeler le dernier visage que j'ai pu contempler.\"",true);
-    this->createTimer(7,"\"Mais pourquoi le visage de votre fille est-il couvert par la brume ?\".",true);
+
+    if (mHaptique->GetHeartBoomMesCouilles()) {
+        qDebug()<<"L'effet battement de coeur est bon !";
+        this->createTimer(3,mHaptique->GetHeartBoomMesCouilles(),true);
+    }
+    this->createTimer(4,"\"Qui êtes vous ?\" interrogea le jeune homme ?",true);
+    this->createTimer(5,"\"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu.\"",true);
+    this->createTimer(6,"\"Et toi qui es tu ?\" rétorqua Gaïen.",true);
+    this->createTimer(7,"\"Je me nomme Sahri, je suis seul sur ces terres depuis si longtemps que je ne puis me rappeler le dernier visage que j'ai pu contempler.\"",true);
+    this->createTimer(8,"\"Mais pourquoi le visage de votre fille est-il couvert par la brume ?\".",true);
 }
 
 void Story::thirdScene(){
@@ -168,8 +174,24 @@ QTimer* Story::createTimer(double nb,const char* toDisplay ){
     return m_myLongTimer;
 }
 
+QTimer* Story::createTimer(double nb, CImmCompoundEffect * effect){
+    QTimer *m_myLongTimer = new QTimer(this);
+    m_myLongTimer->setInterval(this->delayPrintText * nb);
+    m_myLongTimer->setSingleShot(true);
+    connect(m_myLongTimer, &QTimer::timeout, [this,effect] {
+        effect->Start();
+    });
+    m_myLongTimer->start();
+    return m_myLongTimer;
+}
+
 QTimer* Story::createTimer(double nb,const char* toDisplay, bool addToMapTimer ){
     mapTimer[nb]=this->createTimer(nb,toDisplay);
+    return mapTimer[nb];
+}
+
+QTimer* Story::createTimer(double nb, CImmCompoundEffect * effect, bool addToMapTimer ){
+    mapTimer[nb]=this->createTimer(nb,effect);
     return mapTimer[nb];
 }
 
