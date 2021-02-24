@@ -59,12 +59,12 @@ void Story::fourthScene(){
     this->createTimer(4,"Des éclaires jaillirent du nébuleux tourment faisant émergé du sol le peuple de Gaïen et Elëia.",true);
     this->createTimer(5,"La tempête enroba les jeunes enfants",true);
     this->createTimer(6,"puis, dans un ultime tremblement",true);
-    if (mHaptique->GetHeartBoomMesCouilles()) {
+    /*if (mHaptique->GetHeartBoomMesCouilles()) {
         qDebug()<<"L'effet battement de coeur est bon !";
         this->createTimer(7,mHaptique->GetEarthquakeMesCouilles(),true);
-    }
-    this->createTimer(8,"elle vint déposer d'innombrables fines particules sur le sol",true);
-    this->createTimer(9,"On raconte qu'aujourd'hui encore, le vent élancé par ces deux âmes vient encore balayés les grains de cette terre.",true);
+    }*/
+    this->createTimer(7,"elle vint déposer d'innombrables fines particules sur le sol",true);
+    this->createTimer(8,"On raconte qu'aujourd'hui encore, le vent élancé par ces deux âmes vient encore balayés les grains de cette terre.",true);
 }
 
 void Story::fifthScene(){

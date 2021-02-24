@@ -25,17 +25,17 @@ GestionHaptique::GestionHaptique(Story *fen): mFenetre(fen)
             qDebug()<<"Projet ifr charg�";
             mHeartBoomMesCouilles = mProjet->CreateEffect("HeartBoomMesCouilles", mSouris, IMM_PARAM_NODOWNLOAD);
             // TODO FIX
-            mEarthquakeMesCouilles = mProjet->CreateEffect("EarthquakeMesCouilles", mSouris, IMM_PARAM_NODOWNLOAD);
+            //mEarthquakeMesCouilles = mProjet->CreateEffect("EarthquakeMesCouilles", mSouris, IMM_PARAM_NODOWNLOAD);
 
             if (!mHeartBoomMesCouilles)
             {qDebug()<<"===>Erreur chargement HeartBoomMesCouilles ";
                 delete mHeartBoomMesCouilles;
                 mHeartBoomMesCouilles = NULL;
             }
-            {qDebug()<<"===>Erreur chargement EarthquakeMesCouilles ";
+            /*{qDebug()<<"===>Erreur chargement EarthquakeMesCouilles ";
                 delete mEarthquakeMesCouilles;
                 mEarthquakeMesCouilles = NULL;
-            }
+            }*/
         }
         else
         {
