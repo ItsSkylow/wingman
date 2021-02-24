@@ -9,7 +9,7 @@
 
 
 void Story::firstScene(){
-    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/SahriScene1.jpg')}");
+    this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url('C://Users//M2IHM//Desktop//ProjetSahri/Images//SahriScene1.jpg')}");
     this->displayText("Il etait une fois, dans une contree eloigne, a une epoque que le temps a effacer de la memoire des hommes...");
     this->clearMapTimer();
     this->createTimer(1,"un jeune garçon du nom de Sahri.",true);
@@ -28,6 +28,7 @@ void Story::secondScene(){
         qDebug()<<"L'effet battement de coeur est bon !";
         this->createTimer(3,mHaptique->GetHeartBoomMesCouilles(),true);
     }
+
     this->createTimer(4,"\"Qui êtes vous ?\" interrogea le jeune homme ?",true);
     this->createTimer(5,"\"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu.\"",true);
     this->createTimer(6,"\"Et toi qui es tu ?\" rétorqua Gaïen.",true);
@@ -58,8 +59,12 @@ void Story::fourthScene(){
     this->createTimer(4,"Des éclaires jaillirent du nébuleux tourment faisant émergé du sol le peuple de Gaïen et Elëia.",true);
     this->createTimer(5,"La tempête enroba les jeunes enfants",true);
     this->createTimer(6,"puis, dans un ultime tremblement",true);
-    this->createTimer(7,"elle vint déposer d'innombrables fines particules sur le sol",true);
-    this->createTimer(8,"On raconte qu'aujourd'hui encore, le vent élancé par ces deux âmes vient encore balayés les grains de cette terre.",true);
+    if (mHaptique->GetHeartBoomMesCouilles()) {
+        qDebug()<<"L'effet battement de coeur est bon !";
+        this->createTimer(7,mHaptique->GetEarthquakeMesCouilles(),true);
+    }
+    this->createTimer(8,"elle vint déposer d'innombrables fines particules sur le sol",true);
+    this->createTimer(9,"On raconte qu'aujourd'hui encore, le vent élancé par ces deux âmes vient encore balayés les grains de cette terre.",true);
 }
 
 void Story::fifthScene(){

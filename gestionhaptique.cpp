@@ -24,10 +24,17 @@ GestionHaptique::GestionHaptique(Story *fen): mFenetre(fen)
        {//le chemin par d�faut est celui o� se trouve la g�n�ration : xxx-build-desktop/
             qDebug()<<"Projet ifr charg�";
             mHeartBoomMesCouilles = mProjet->CreateEffect("HeartBoomMesCouilles", mSouris, IMM_PARAM_NODOWNLOAD);
+            // TODO FIX
+            mEarthquakeMesCouilles = mProjet->CreateEffect("EarthquakeMesCouilles", mSouris, IMM_PARAM_NODOWNLOAD);
+
             if (!mHeartBoomMesCouilles)
             {qDebug()<<"===>Erreur chargement HeartBoomMesCouilles ";
                 delete mHeartBoomMesCouilles;
                 mHeartBoomMesCouilles = NULL;
+            }
+            {qDebug()<<"===>Erreur chargement EarthquakeMesCouilles ";
+                delete mEarthquakeMesCouilles;
+                mEarthquakeMesCouilles = NULL;
             }
         }
         else
@@ -48,6 +55,11 @@ GestionHaptique::GestionHaptique(Story *fen): mFenetre(fen)
         CImmCompoundEffect *GestionHaptique::GetHeartBoomMesCouilles() const
         {
             return mHeartBoomMesCouilles;
+        }
+
+        CImmCompoundEffect *GestionHaptique::GetEarthquakeMesCouilles() const
+        {
+            return mEarthquakeMesCouilles;
         }
 
         CImmProject *GestionHaptique::GetProjet() const

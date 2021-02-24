@@ -20,11 +20,13 @@ public:
     ~GestionHaptique();
 
     CImmCompoundEffect *GetHeartBoomMesCouilles() const;
+    CImmCompoundEffect *GetEarthquakeMesCouilles() const;
     CImmProject *GetProjet() const;
 private:
     CImmMouse *mSouris;
     CImmProject  *mProjet;
     CImmCompoundEffect	*mHeartBoomMesCouilles;
+    CImmCompoundEffect	*mEarthquakeMesCouilles;
     Story *mFenetre;
 };
 
