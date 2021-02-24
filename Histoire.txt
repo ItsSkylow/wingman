@@ -1,4 +1,4 @@
-Sahri l’enfant du désert 
+﻿Sahri l’enfant du désert 
 
 
 ******** scène 1
@@ -10,9 +10,11 @@ Nul ne savait d’où il venait ou qui il avait des parents. Certains racontait 
 Un jour, alors que tout était calme, le jeune Sahri rencontra un homme tout de blanc vêtu. 
 A ses côtés se tenait une jeune fille, dont le visage était masqué par une épaisse brume (*bouger la souris délicatement pour signifier l'effacement*) . 
 Le jeune Sahri s’arrêta alors, contempla la jeune fille si mystérieuse et sentit soudain sa poitrine se déchirer (*battement de la souris*). 
-"Qui êtes vous ?" interrogea le jeune homme ? "Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu. 
-"Et toi qui es tu ?" rétorqua Gaïen. "Je me nomme Sahri, je suis seul sur ces terres depuis si longtemps que je ne puis me rappeler le dernier visage que j'ai pu contempler. 
-Mais pourquoi le visage de votre fille est couvert par la brume ?". 
+"Qui êtes vous ?" interrogea le jeune homme ?
+"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu. 
+"Et toi qui es tu ?" rétorqua Gaïen.
+"Je me nomme Sahri, je suis seul sur ces terres depuis si longtemps que je ne puis me rappeler le dernier visage que j'ai pu contempler". 
+"Mais pourquoi le visage de votre fille est couvert par la brume ?". 
 
 ******* scène 3
 "Elle a été victime d'une malédiction, jadis notre peuple vivait en paix, mais un jour funeste, un éclair vint déchirer les cieux (dessin *éclair + vibration *), 

@@ -5,6 +5,8 @@
 #include <gestionhaptique.h>
 #include <windows.h>
 
+typedef void (Story::*ScriptFunction)(void); // function pointer type
+
 namespace Ui {
 class Story;
 }
@@ -25,12 +27,22 @@ private slots:
     void displayText(const char* chaine);
     void firstScene();
     void secondScene();
+    void thirdScene();
     QTimer* createTimer(double nb,const char* toDisplay );
+    QTimer* createTimer(double nb,const char* toDisplay, bool addToMapTimer );
+    void clearMapTimer();
+
+    void on_spinPage_editingFinished();
+
+    void on_spinPage_valueChanged(int arg1);
 
 private:
     double delayPrintText = 7000.;
     Ui::Story *ui;
     GestionHaptique *mHaptique;
+    std::map<int, QTimer*> mapTimer;
+    std::map<int, ScriptFunction> mapStory;
+    int currentPage = 0;
 };
 
 #endif // STORY_H
