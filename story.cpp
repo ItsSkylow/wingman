@@ -11,6 +11,7 @@
 void Story::firstScene(){
     this->maxLabelInCurrentScene = 3;
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url('C://Users//M2IHM//Desktop//ProjetSahri/Images//SahriScene1.jpg')}");
+    this->mHaptique->GetFogEffect()->Start();
     this->displayText("Il etait une fois, dans une contree eloigne, a une epoque que le temps a effacer de la memoire des hommes...");
     this->clearMapTimer();
     this->createTimer(1,"un jeune garçon du nom de Sahri.",true);
@@ -23,19 +24,13 @@ void Story::secondScene(){
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert brume.png')}");
     this->displayText("Un jour, alors que tout était calme, le jeune Sahri rencontra un homme tout de blanc vêtu. ");
     this->clearMapTimer();
-    this->createTimer(1,"A ses côtés se tenait une jeune fille, dont le visage était masqué par une épaisse brume.",true);
-    this->createTimer(2,"Le jeune Sahri s’arrêta alors, contempla la jeune fille si mystérieuse et sentit soudain sa poitrine se déchirer.",true);
-
-    if (mHaptique->GetHeartBoomMesCouilles()) {
-        qDebug()<<"L'effet battement de coeur est bon !";
-        this->createTimer(3,mHaptique->GetHeartBoomMesCouilles(),true);
-    }
-
-    this->createTimer(4,"\"Qui êtes vous ?\" interrogea le jeune homme ?",true);
-    this->createTimer(5,"\"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu.\"",true);
-    this->createTimer(6,"\"Et toi qui es tu ?\" rétorqua Gaïen.",true);
-    this->createTimer(7,"\"Je me nomme Sahri, je suis seul sur ces terres depuis si longtemps que je ne puis me rappeler le dernier visage que j'ai pu contempler.\"",true);
-    this->createTimer(8,"\"Mais pourquoi le visage de votre fille est-il couvert par la brume ?\".",true);
+    this->createTimer(1,"A ses côtés se tenait une jeune fille, dont le visage était masqué par une épaisse brume.",mHaptique->GetFogEffect(), true);
+    this->createTimer(2,"Le jeune Sahri s’arrêta alors, contempla la jeune fille si mystérieuse et sentit soudain sa poitrine se déchirer.",mHaptique->GetHeartBoomMesCouilles(),true);
+    this->createTimer(3,"\"Qui êtes vous ?\" interrogea le jeune homme ?",true);
+    this->createTimer(4,"\"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu.\"",true);
+    this->createTimer(5,"\"Et toi qui es tu ?\" rétorqua Gaïen.",true);
+    this->createTimer(6,"\"Je me nomme Sahri, je suis seul sur ces terres depuis si longtemps que je ne puis me rappeler le dernier visage que j'ai pu contempler.\"",true);
+    this->createTimer(7,"\"Mais pourquoi le visage de votre fille est-il couvert par la brume ?\".",true);
 }
 
 void Story::thirdScene(){
@@ -43,13 +38,12 @@ void Story::thirdScene(){
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
     this->displayText("\"Elle a été victime d'une malédiction, jadis notre peuple vivait en paix\"");
     this->clearMapTimer();
-    this->createTimer(1,"Mais un jour funeste, un éclair vint déchirer les cieux",true);
-    this->createTimer(2,"\"Il rebondit sur tous ceux que nous avions pu connaitre avant de s'arrêter devant le visage de ma fille et de s'évaporer en brume.\"",true);
+    this->createTimer(1,"Mais un jour funeste, un éclair vint déchirer les cieux",mHaptique->GetVibroEffect(),true);
+    this->createTimer(2,"\"Il rebondit sur tous ceux que nous avons pu connaitre avant de s'arrêter devant le visage de ma fille et de s'évaporer en brume.\"", mHaptique->GetRebondEffect(),true);
     this->createTimer(3,"\"Depuis ce jour, plus jamais il ne la quitta.\"",true);
     this->createTimer(4,"Avant de s'évaporer l'éclair prononça ces mots :",true);
     this->createTimer(5,"\"Ton autre il te faut trouver, afin que l'équilibre a nouveau soit forgé\"",true);
     this->createTimer(6,"\"Depuis ce jour nous errons elle et moi à sa recherche.\"",true);
-
 }
 
 void Story::fourthScene(){
@@ -61,12 +55,8 @@ void Story::fourthScene(){
     this->createTimer(2,"Jusqu'à toucher les gouttes de brume en suspension sur son visage.",true);
     this->createTimer(3,"Alors, la brume vint à s'arracher du visage de la jeune princesse et heurta tout sur son passage avec violence ",true);
     this->createTimer(4,"Des éclaires jaillirent du nébuleux tourment faisant émergé du sol le peuple de Gaïen et Elëia.",true);
-    this->createTimer(5,"La tempête enroba les jeunes enfants",true);
-    this->createTimer(6,"puis, dans un ultime tremblement",true);
-    if (mHaptique->GetHeartBoomMesCouilles()) {
-        qDebug()<<"L'effet battement de coeur est bon !";
-        this->createTimer(7,mHaptique->GetEarthquakeMesCouilles(),true);
-    }
+    this->createTimer(5,"La tempête enroba les jeunes enfants",mHaptique->GetTourbillon(),true);
+    this->createTimer(6,"puis, dans un ultime tremblement",mHaptique->GetEarthquakeMesCouilles(),true);
     this->createTimer(7,"elle vint déposer d'innombrables fines particules sur le sol",true);
     this->createTimer(8,"On raconte qu'aujourd'hui encore, le vent élancé par ces deux âmes vient encore balayés les grains de cette terre.",true);
 }
@@ -184,9 +174,9 @@ QTimer* Story::createTimer(double nb,const char* toDisplay ){
     QTimer *m_myLongTimer = new QTimer(this);
     m_myLongTimer->setInterval(this->delayPrintText * nb);
     m_myLongTimer->setSingleShot(true);
-    connect(m_myLongTimer, &QTimer::timeout, [this,toDisplay,nb] {
-       this->displayText(toDisplay);
-       qDebug()  << nb/this->maxLabelInCurrentScene;
+
+    connect(m_myLongTimer, &QTimer::timeout, [this,toDisplay, nb] {
+        this->displayText(toDisplay);
 
        ui->progressBar->setValue((nb/this->maxLabelInCurrentScene)*100);
        ui->progressBar->setFormat("Progression de la scène : " + QString::number((nb/this->maxLabelInCurrentScene)*100,'G',3)+"%");
@@ -194,18 +184,25 @@ QTimer* Story::createTimer(double nb,const char* toDisplay ){
        if(nb==this->maxLabelInCurrentScene){
            ui->pushButton_2->setStyleSheet("background: green;");
        }
-
     });
     m_myLongTimer->start();
     return m_myLongTimer;
 }
 
-QTimer* Story::createTimer(double nb, CImmCompoundEffect * effect){
+QTimer* Story::createTimer(double nb,const char* toDisplay, CImmCompoundEffect * effect){
     QTimer *m_myLongTimer = new QTimer(this);
     m_myLongTimer->setInterval(this->delayPrintText * nb);
     m_myLongTimer->setSingleShot(true);
-    connect(m_myLongTimer, &QTimer::timeout, [this,effect] {
+    connect(m_myLongTimer, &QTimer::timeout, [this,toDisplay, effect, nb] {
+        this->displayText(toDisplay);
         effect->Start();
+      
+        ui->progressBar->setValue((nb/this->maxLabelInCurrentScene)*100);
+        ui->progressBar->setFormat("Progression de la scène : " + QString::number((nb/this->maxLabelInCurrentScene)*100,'G',3)+"%");
+
+        if(nb==this->maxLabelInCurrentScene){
+           ui->pushButton_2->setStyleSheet("background: green;");
+        }
     });
     m_myLongTimer->start();
     return m_myLongTimer;
@@ -216,22 +213,21 @@ QTimer* Story::createTimer(double nb,const char* toDisplay, bool addToMapTimer )
     return mapTimer[nb];
 }
 
-QTimer* Story::createTimer(double nb,const char* toDisplay, double additionalTime ){
-    mapTimer[nb]=this->createTimer(nb + additionalTime,toDisplay);
+QTimer* Story::createTimer(double nb, const char* toDisplay, CImmCompoundEffect * effect, bool addToMapTimer ){
+    mapTimer[nb]=this->createTimer(nb,toDisplay,effect);
     return mapTimer[nb];
 }
 
-QTimer* Story::createTimer(double nb, CImmCompoundEffect * effect, bool addToMapTimer ){
-    mapTimer[nb]=this->createTimer(nb,effect);
-    return mapTimer[nb];
-}
+//QTimer* Story::createTimer(double nb,const char* toDisplay, double additionalTime ){
+//    mapTimer[nb]=this->createTimer(nb + additionalTime,toDisplay);
+//}
 
 void Story::clearMapTimer(){
     ui->progressBar->setValue(0);
     ui->progressBar->setFormat("Progression de la scène : " + QString::number(0)+"%");
     for (std::map<int, QTimer*>::iterator it = mapTimer.begin(); it != mapTimer.end(); ++it)
     {
-      it->second->stop();
+        it->second->stop();
     }
 }
 
