@@ -19,6 +19,7 @@ GestionHaptique::GestionHaptique(Story *fen): mFenetre(fen)
     }
 
 
+<<<<<<< HEAD
     mProjet = new CImmProject();
     if (mProjet->OpenFile("C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\HapticEffect\\HeartBeatEffect.ifr", mSouris))
     {//le chemin par d�faut est celui o� se trouve la g�n�ration : xxx-build-desktop/
@@ -28,6 +29,25 @@ GestionHaptique::GestionHaptique(Story *fen): mFenetre(fen)
         {qDebug()<<"===>Erreur chargement HeartBoomMesCouilles ";
             delete mHeartBoomMesCouilles;
             mHeartBoomMesCouilles = NULL;
+=======
+        mProjet = new CImmProject();
+        if (mProjet->OpenFile("C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\HapticEffect\\HeartBeatEffect.ifr", mSouris))
+       {//le chemin par d�faut est celui o� se trouve la g�n�ration : xxx-build-desktop/
+            qDebug()<<"Projet ifr charg�";
+            mHeartBoomMesCouilles = mProjet->CreateEffect("HeartBoomMesCouilles", mSouris, IMM_PARAM_NODOWNLOAD);
+            // TODO FIX
+            //mEarthquakeMesCouilles = mProjet->CreateEffect("EarthquakeMesCouilles", mSouris, IMM_PARAM_NODOWNLOAD);
+
+            if (!mHeartBoomMesCouilles)
+            {qDebug()<<"===>Erreur chargement HeartBoomMesCouilles ";
+                delete mHeartBoomMesCouilles;
+                mHeartBoomMesCouilles = NULL;
+            }
+            /*{qDebug()<<"===>Erreur chargement EarthquakeMesCouilles ";
+                delete mEarthquakeMesCouilles;
+                mEarthquakeMesCouilles = NULL;
+            }*/
+>>>>>>> 1ec259295b7534b35d49e5d6206f7075b91a66f5
         }
 
         mEarthquakeMesCouilles = mProjet->CreateEffect("EarthquakeMesCouilles", mSouris, IMM_PARAM_NODOWNLOAD);
@@ -73,6 +93,7 @@ GestionHaptique::~GestionHaptique()
 }
 
 
+<<<<<<< HEAD
 CImmCompoundEffect *GestionHaptique::GetHeartBoomMesCouilles() const
 {
     return mHeartBoomMesCouilles;
@@ -102,6 +123,17 @@ CImmProject *GestionHaptique::GetProjet() const
 {
     return mProjet;
 }
+=======
+        CImmCompoundEffect *GestionHaptique::GetEarthquakeMesCouilles() const
+        {
+            return mEarthquakeMesCouilles;
+        }
+
+        CImmProject *GestionHaptique::GetProjet() const
+        {
+            return mProjet;
+        }
+>>>>>>> 1ec259295b7534b35d49e5d6206f7075b91a66f5
 
 
 
