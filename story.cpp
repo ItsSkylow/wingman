@@ -9,6 +9,7 @@
 
 
 void Story::firstScene(){
+    this->maxLabelInCurrentScene = 3;
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url('C://Users//M2IHM//Desktop//ProjetSahri/Images//SahriScene1.jpg')}");
     this->displayText("Il etait une fois, dans une contree eloigne, a une epoque que le temps a effacer de la memoire des hommes...");
     this->clearMapTimer();
@@ -18,6 +19,7 @@ void Story::firstScene(){
 }
 
 void Story::secondScene(){
+    this->maxLabelInCurrentScene = 8;
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert brume.png')}");
     this->displayText("Un jour, alors que tout était calme, le jeune Sahri rencontra un homme tout de blanc vêtu. ");
     this->clearMapTimer();
@@ -37,6 +39,7 @@ void Story::secondScene(){
 }
 
 void Story::thirdScene(){
+    this->maxLabelInCurrentScene = 6;
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
     this->displayText("\"Elle a été victime d'une malédiction, jadis notre peuple vivait en paix\"");
     this->clearMapTimer();
@@ -50,6 +53,7 @@ void Story::thirdScene(){
 }
 
 void Story::fourthScene(){
+    this->maxLabelInCurrentScene = 8;
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert.png')}");
     this->displayText("Le jeune Sahri s'approcha alors, comme si sa destinée s'accomplissait");
     this->clearMapTimer();
@@ -68,6 +72,7 @@ void Story::fourthScene(){
 }
 
 void Story::fifthScene(){
+    this->maxLabelInCurrentScene = 1;
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert vide.png')}");
     this->displayText("Ainsi le sable et le vent, séparés par le temps et l'oubli étaient réunis.");
     this->clearMapTimer();
@@ -111,6 +116,8 @@ Story::Story(QWidget *parent) :
     ui->labelNbPage->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
     ui->labelNbPage->setWordWrap(true);
 
+    //Parametrage de la barre de progression
+
 }
 
 Story::~Story()
@@ -149,6 +156,8 @@ void Story::on_pushButton_clicked() //Bouton Retour
         (this->*mapStory[0])();
 
     ui->spinPage->setValue(currentPage+1);
+    ui->pushButton->setStyleSheet(styleSheet());
+    ui->pushButton_2->setStyleSheet(styleSheet());
 
 }
 
@@ -164,6 +173,8 @@ void Story::on_pushButton_2_clicked() //Bouton suivant
 
 
     ui->spinPage->setValue(currentPage+1);
+    ui->pushButton->setStyleSheet(styleSheet());
+    ui->pushButton_2->setStyleSheet(styleSheet());
 }
 
 
@@ -173,8 +184,17 @@ QTimer* Story::createTimer(double nb,const char* toDisplay ){
     QTimer *m_myLongTimer = new QTimer(this);
     m_myLongTimer->setInterval(this->delayPrintText * nb);
     m_myLongTimer->setSingleShot(true);
-    connect(m_myLongTimer, &QTimer::timeout, [this,toDisplay] {
+    connect(m_myLongTimer, &QTimer::timeout, [this,toDisplay,nb] {
        this->displayText(toDisplay);
+       qDebug()  << nb/this->maxLabelInCurrentScene;
+
+       ui->progressBar->setValue((nb/this->maxLabelInCurrentScene)*100);
+       ui->progressBar->setFormat("Progression de la scène : " + QString::number((nb/this->maxLabelInCurrentScene)*100,'G',3)+"%");
+
+       if(nb==this->maxLabelInCurrentScene){
+           ui->pushButton_2->setStyleSheet("background: green;");
+       }
+
     });
     m_myLongTimer->start();
     return m_myLongTimer;
@@ -207,6 +227,8 @@ QTimer* Story::createTimer(double nb, CImmCompoundEffect * effect, bool addToMap
 }
 
 void Story::clearMapTimer(){
+    ui->progressBar->setValue(0);
+    ui->progressBar->setFormat("Progression de la scène : " + QString::number(0)+"%");
     for (std::map<int, QTimer*>::iterator it = mapTimer.begin(); it != mapTimer.end(); ++it)
     {
       it->second->stop();
@@ -224,4 +246,20 @@ void Story::on_spinPage_valueChanged(int arg1)
         currentPage = ui->spinPage->value() - 1;
         (this->*mapStory[currentPage])();
     }
+
+    ui->pushButton->setStyleSheet(styleSheet());
+    ui->pushButton_2->setStyleSheet(styleSheet());
+}
+
+void Story::on_radioButton_clicked()
+{
+    QFont font = QFont("AlfredDrake",20,10);
+    ui->storyLabel->setFont(font);
+}
+
+void Story::on_radioButton_2_clicked()
+{
+
+    QFont font = QFont("Arial",20,10);
+    ui->storyLabel->setFont(font);
 }
