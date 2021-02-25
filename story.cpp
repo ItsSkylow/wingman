@@ -41,7 +41,7 @@ void Story::thirdScene(){
     this->createTimer(1,"Mais un jour funeste, un éclair vint déchirer les cieux",mHaptique->GetVibroEffect(),true);
     this->createTimer(2,"\"Il rebondit sur tous ceux que nous avons pu connaitre avant de s'arrêter devant le visage de ma fille et de s'évaporer en brume.\"", mHaptique->GetRebondEffect(),true);
     this->createTimer(3,"\"Depuis ce jour, plus jamais il ne la quitta.\"",true);
-    this->createTimer(4,"Avant de s'évaporé l'éclair prononça ces mots :",true);
+    this->createTimer(4,"Avant de s'évaporer l'éclair prononça ces mots :",true);
     this->createTimer(5,"\"Ton autre il te faut trouver, afin que l'équilibre a nouveau soit forgé\"",true);
     this->createTimer(6,"\"Depuis ce jour nous errons elle et moi à sa recherche.\"",true);
 }
@@ -53,7 +53,7 @@ void Story::fourthScene(){
     this->clearMapTimer();
     this->createTimer(1,"Il rapprocha sa main du visage brumeux de la jeune fille.",true);
     this->createTimer(2,"Jusqu'à toucher les gouttes de brume en suspension sur son visage.",true);
-    this->createTimer(3,"Alors,  la brume vint alors s'arracher du visage de la jeune princesse et heurta tout sur son passage avec violence ",true);
+    this->createTimer(3,"Alors, la brume vint à s'arracher du visage de la jeune princesse et heurta tout sur son passage avec violence ",true);
     this->createTimer(4,"Des éclaires jaillirent du nébuleux tourment faisant émergé du sol le peuple de Gaïen et Elëia.",true);
     this->createTimer(5,"La tempête enroba les jeunes enfants",mHaptique->GetTourbillon(),true);
     this->createTimer(6,"puis, dans un ultime tremblement",mHaptique->GetEarthquakeMesCouilles(),true);
