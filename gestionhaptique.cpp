@@ -46,16 +46,23 @@ GestionHaptique::GestionHaptique(Story *fen): mFenetre(fen)
 
         mFogEffect = mProjet->CreateEffect("FogEffect", mSouris, IMM_PARAM_NODOWNLOAD);
         if (!mFogEffect)
-        {qDebug()<<"===>Erreur chargement FogEffect ";
+        {qDebug()<<"===>Erreur chargement Fog ";
             delete mFogEffect;
             mFogEffect = NULL;
         }
 
         mVibro = mProjet->CreateEffect("Vibration", mSouris, IMM_PARAM_NODOWNLOAD);
         if (!mVibro)
-        {qDebug()<<"===>Erreur chargement VibrationEffect ";
+        {qDebug()<<"===>Erreur chargement Vibration ";
             delete mVibro;
             mVibro = NULL;
+        }
+
+        mRebond = mProjet->CreateEffect("Rebond", mSouris, IMM_PARAM_NODOWNLOAD);
+        if (!mRebond)
+        {qDebug()<<"===>Erreur chargement Rebond ";
+            delete mRebond;
+            mRebond = NULL;
         }
     }
     else
@@ -96,6 +103,11 @@ CImmCompoundEffect *GestionHaptique::GetFogEffect() const
 CImmCompoundEffect *GestionHaptique::GetVibroEffect() const
 {
     return mVibro;
+}
+
+CImmCompoundEffect *GestionHaptique::GetRebondEffect() const
+{
+    return mRebond;
 }
 
 CImmProject *GestionHaptique::GetProjet() const

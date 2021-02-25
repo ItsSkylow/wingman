@@ -25,11 +25,6 @@ void Story::secondScene(){
     this->clearMapTimer();
     this->createTimer(1,"A ses côtés se tenait une jeune fille, dont le visage était masqué par une épaisse brume.",mHaptique->GetFogEffect(), true);
     this->createTimer(2,"Le jeune Sahri s’arrêta alors, contempla la jeune fille si mystérieuse et sentit soudain sa poitrine se déchirer.",mHaptique->GetHeartBoomMesCouilles(),true);
-
-    /*if (mHaptique->GetHeartBoomMesCouilles()) {
-        qDebug()<<"L'effet battement de coeur est bon !";
-        this->createTimer(3,mHaptique->GetHeartBoomMesCouilles(),true);
-    }*/
     this->createTimer(3,"\"Qui êtes vous ?\" interrogea le jeune homme ?",true);
     this->createTimer(4,"\"Je me nomme Gaïen et voici ma fille Elëia, nous sommes les seules représentants de notre peuple disparu.\"",true);
     this->createTimer(5,"\"Et toi qui es tu ?\" rétorqua Gaïen.",true);
@@ -42,7 +37,7 @@ void Story::thirdScene(){
     this->displayText("\"Elle a été victime d'une malédiction, jadis notre peuple vivait en paix\"");
     this->clearMapTimer();
     this->createTimer(1,"Mais un jour funeste, un éclair vint déchirer les cieux",mHaptique->GetVibroEffect(),true);
-    this->createTimer(2,"\"Il rebondit sur tous ceux que nous avons pu connaitre avant de s'arrêter devant le visage de ma fille et de s'évaporer en brume.\"",true);
+    this->createTimer(2,"\"Il rebondit sur tous ceux que nous avons pu connaitre avant de s'arrêter devant le visage de ma fille et de s'évaporer en brume.\"", mHaptique->GetRebondEffect(),true);
     this->createTimer(3,"\"Depuis ce jour, plus jamais il ne la quitta.\"",true);
     this->createTimer(4,"Avant de s'évaporé l'éclair prononça ces mots :",true);
     this->createTimer(5,"\"Ton autre il te faut trouver, afin que l'équilibre a nouveau soit forgé\"",true);

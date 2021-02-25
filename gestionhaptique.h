@@ -24,6 +24,7 @@ public:
     CImmCompoundEffect *GetTourbillon() const;
     CImmCompoundEffect *GetFogEffect() const;
     CImmCompoundEffect *GetVibroEffect() const;
+    CImmCompoundEffect *GetRebondEffect() const;
     CImmProject *GetProjet() const;
 private:
     CImmMouse *mSouris;
@@ -33,6 +34,7 @@ private:
     CImmCompoundEffect	*mTourbillon;
     CImmCompoundEffect	*mVibro;
     CImmCompoundEffect	*mFogEffect;
+    CImmCompoundEffect	*mRebond;
     Story *mFenetre;
 };
 
