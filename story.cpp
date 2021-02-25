@@ -50,15 +50,16 @@ void Story::fourthScene(){
     this->maxLabelInCurrentScene = 8;
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert.png')}");
     this->displayText("Le jeune Sahri s'approcha alors, comme si sa destinée s'accomplissait");
+    mHaptique->GetPasEffect()->Start();
     this->clearMapTimer();
     this->createTimer(1,"Il rapprocha sa main du visage brumeux de la jeune fille.",true);
     this->createTimer(2,"Jusqu'à toucher les gouttes de brume en suspension sur son visage.",true);
-    this->createTimer(3,"Alors, la brume vint à s'arracher du visage de la jeune princesse et heurta tout sur son passage avec violence ",true);
+    this->createTimer(3,"Alors, la brume vint à s'arracher du visage de la jeune princesse et heurta tout sur son passage avec violence ",mHaptique->GetCornerEffect(),true);
     this->createTimer(4,"Des éclaires jaillirent du nébuleux tourment faisant émergé du sol le peuple de Gaïen et Elëia.",true);
     this->createTimer(5,"La tempête enroba les jeunes enfants",mHaptique->GetTourbillon(),true);
     this->createTimer(6,"puis, dans un ultime tremblement",mHaptique->GetEarthquakeMesCouilles(),true);
-    this->createTimer(7,"elle vint déposer d'innombrables fines particules sur le sol",true);
-    this->createTimer(8,"On raconte qu'aujourd'hui encore, le vent élancé par ces deux âmes vient encore balayés les grains de cette terre.",true);
+    this->createTimer(7,"elle vint déposer d'innombrables fines particules sur le sol",mHaptique->GetPluieEffect(),true);
+    this->createTimer(8,"On raconte qu'aujourd'hui encore, le vent élancé par ces deux âmes vient encore balayés les grains de cette terre.",mHaptique->GetFogEffect(),true);
 }
 
 void Story::fifthScene(){

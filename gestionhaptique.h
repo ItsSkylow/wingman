@@ -25,6 +25,9 @@ public:
     CImmCompoundEffect *GetFogEffect() const;
     CImmCompoundEffect *GetVibroEffect() const;
     CImmCompoundEffect *GetRebondEffect() const;
+    CImmCompoundEffect *GetPasEffect() const;
+    CImmCompoundEffect *GetPluieEffect() const;
+    CImmCompoundEffect *GetCornerEffect() const;
     CImmProject *GetProjet() const;
 private:
     CImmMouse *mSouris;
@@ -35,6 +38,9 @@ private:
     CImmCompoundEffect	*mVibro;
     CImmCompoundEffect	*mFogEffect;
     CImmCompoundEffect	*mRebond;
+    CImmCompoundEffect	*mPas;
+    CImmCompoundEffect	*mPluie;
+    CImmCompoundEffect	*mCorner;
     Story *mFenetre;
 };
 

@@ -64,6 +64,27 @@ GestionHaptique::GestionHaptique(Story *fen): mFenetre(fen)
             delete mRebond;
             mRebond = NULL;
         }
+
+        mPas = mProjet->CreateEffect("Pas", mSouris, IMM_PARAM_NODOWNLOAD);
+        if (!mPas)
+        {qDebug()<<"===>Erreur chargement Pas ";
+            delete mPas;
+            mPas = NULL;
+        }
+
+        mPluie = mProjet->CreateEffect("Pluie", mSouris, IMM_PARAM_NODOWNLOAD);
+        if (!mPluie)
+        {qDebug()<<"===>Erreur chargement Pluie ";
+            delete mPluie;
+            mPluie = NULL;
+        }
+
+        mCorner = mProjet->CreateEffect("Corner", mSouris, IMM_PARAM_NODOWNLOAD);
+        if (!mCorner)
+        {qDebug()<<"===>Erreur chargement Corner ";
+            delete mCorner;
+            mCorner = NULL;
+        }
     }
     else
     {
@@ -108,6 +129,21 @@ CImmCompoundEffect *GestionHaptique::GetVibroEffect() const
 CImmCompoundEffect *GestionHaptique::GetRebondEffect() const
 {
     return mRebond;
+}
+
+CImmCompoundEffect *GestionHaptique::GetPasEffect() const
+{
+    return mPas;
+}
+
+CImmCompoundEffect *GestionHaptique::GetPluieEffect() const
+{
+    return mPluie;
+}
+
+CImmCompoundEffect *GestionHaptique::GetCornerEffect() const
+{
+    return mCorner;
 }
 
 CImmProject *GestionHaptique::GetProjet() const
