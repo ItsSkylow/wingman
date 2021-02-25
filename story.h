@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <gestionhaptique.h>
 #include <windows.h>
+#include <iostream>
+#include <iomanip>
+#include <QFile>
+
 
 typedef void (Story::*ScriptFunction)(void); // function pointer type
 
@@ -40,6 +44,10 @@ private slots:
 
     void on_spinPage_valueChanged(int arg1);
 
+    void on_radioButton_clicked();
+
+    void on_radioButton_2_clicked();
+
 private:
     double delayPrintText = 7000.;
     Ui::Story *ui;
@@ -47,6 +55,7 @@ private:
     std::map<int, QTimer*> mapTimer;
     std::map<int, ScriptFunction> mapStory;
     int currentPage = 0;
+    int maxLabelInCurrentScene = 0;
 };
 
 #endif // STORY_H
