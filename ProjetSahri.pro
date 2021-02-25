@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,6 +15,7 @@ s
 INCLUDEPATH += "C:\Program Files\Immersion Corporation\IFC23\inc"
 
 LIBS += "C:\Program Files\Immersion Corporation\IFC23\lib\IFC23.lib"
+
 
 
 SOURCES += main.cpp\
