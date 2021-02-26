@@ -7,7 +7,16 @@
 #include <iostream>
 #include <iomanip>
 #include <QFile>
-
+#include <string>
+#include <QtMultimedia/QSound>
+#include <thread>
+#include <QSoundEffect>
+#include <QPropertyAnimation>
+#include <QGraphicsOpacityEffect>
+#include <QFontDatabase>
+#include <QThread>
+#include <QTimer>
+#include <QDebug>
 
 typedef void (Story::*ScriptFunction)(void); // function pointer type
 
@@ -54,8 +63,17 @@ private:
     GestionHaptique *mHaptique;
     std::map<int, QTimer*> mapTimer;
     std::map<int, ScriptFunction> mapStory;
+    std::map<int, const char*> mapSoundScene;
     int currentPage = 0;
     int maxLabelInCurrentScene = 0;
+
+    void initSounds();
+    void playSound(int id);
+    void stopSound(int id);
+    void playSoundFromBegin(int id);
+    void stopAllSound();
+
+    QSoundEffect *sound;
 };
 
 #endif // STORY_H
