@@ -10,6 +10,13 @@
 #include <string>
 #include <QtMultimedia/QSound>
 #include <thread>
+#include <QSoundEffect>
+#include <QPropertyAnimation>
+#include <QGraphicsOpacityEffect>
+#include <QFontDatabase>
+#include <QThread>
+#include <QTimer>
+#include <QDebug>
 
 typedef void (Story::*ScriptFunction)(void); // function pointer type
 
@@ -65,6 +72,8 @@ private:
     void stopSound(int id);
     void playSoundFromBegin(int id);
     void stopAllSound();
+
+    QSoundEffect *sound;
 };
 
 #endif // STORY_H
