@@ -10,7 +10,7 @@
 
 void Story::firstScene(){
     this->maxLabelInCurrentScene = 3;
-    this->playSound(1);
+    this->playSoundFromBegin(1);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url('C://Users//M2IHM//Desktop//ProjetSahri/Images//SahriScene1.jpg')}");
     this->mHaptique->GetFogEffect()->Start();
     this->displayText("Il etait une fois, dans une contree eloigne, a une epoque que le temps a effacer de la memoire des hommes...");
@@ -22,7 +22,7 @@ void Story::firstScene(){
 
 void Story::secondScene(){
     this->maxLabelInCurrentScene = 7;
-    this->playSound(2);
+    this->playSoundFromBegin(2);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert brume.png')}");
     this->displayText("Un jour, alors que tout était calme, le jeune Sahri rencontra un homme tout de blanc vêtu. ");
     this->clearMapTimer();
@@ -37,7 +37,7 @@ void Story::secondScene(){
 
 void Story::thirdScene(){
     this->maxLabelInCurrentScene = 6;
-    this->playSound(3);
+    this->playSoundFromBegin(3);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
     this->displayText("\"Elle a été victime d'une malédiction, jadis notre peuple vivait en paix\"");
     this->clearMapTimer();
@@ -51,7 +51,7 @@ void Story::thirdScene(){
 
 void Story::fourthScene(){
     this->maxLabelInCurrentScene = 8;
-    this->playSound(4);
+    this->playSoundFromBegin(4);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert.png')}");
     this->displayText("Le jeune Sahri s'approcha alors, comme si sa destinée s'accomplissait");
     mHaptique->GetPasEffect()->Start();
@@ -68,7 +68,7 @@ void Story::fourthScene(){
 
 void Story::fifthScene(){
     this->maxLabelInCurrentScene = 1;
-    this->playSound(5);
+    this->playSoundFromBegin(5);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert vide.png')}");
     this->displayText("Ainsi le sable et le vent, séparés par le temps et l'oubli étaient réunis.");
     this->clearMapTimer();
@@ -146,7 +146,8 @@ void Story::displayText(const char* chaine){
 
 void Story::on_pushButton_clicked() //Bouton Retour
 {
-
+    this->stopAllSound();
+    this->playSoundFromBegin(currentPage+1);
     if(currentPage > 0){
         currentPage--;
         (this->*mapStory[currentPage])();
@@ -163,6 +164,8 @@ void Story::on_pushButton_clicked() //Bouton Retour
 
 void Story::on_pushButton_2_clicked() //Bouton suivant
 {
+    this->stopAllSound();
+    this->playSoundFromBegin(currentPage+1);
     if(currentPage < mapStory.size()-1){
         currentPage++;
         (this->*mapStory[currentPage])();
@@ -247,11 +250,12 @@ void Story::on_spinPage_editingFinished()
 
 void Story::on_spinPage_valueChanged(int arg1)
 {
+    this->stopAllSound();
     if(ui->spinPage->value() <= mapStory.size() && ui->spinPage->value() > 0){
         currentPage = ui->spinPage->value() - 1;
         (this->*mapStory[currentPage])();
     }
-
+    this->playSoundFromBegin(currentPage+1);
     ui->pushButton->setStyleSheet(styleSheet());
     ui->pushButton_2->setStyleSheet(styleSheet());
 }
@@ -273,7 +277,7 @@ void Story::on_radioButton_2_clicked()
 void Story::initSounds(){ //Open all sounds
 
     mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene1.mp3\" type mpegvideo alias Scene1"), NULL, 0, NULL);
-    mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene2.mp3\" type mpegvideo alias Scene2"), NULL, 0, NULL);
+    mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene2v2.mp3\" type mpegvideo alias Scene2"), NULL, 0, NULL);
     mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene3.mp3\" type mpegvideo alias Scene3"), NULL, 0, NULL);
     mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene4.mp3\" type mpegvideo alias Scene4"), NULL, 0, NULL);
     mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene5.mp3\" type mpegvideo alias Scene5"), NULL, 0, NULL);
@@ -306,4 +310,33 @@ void Story::playSoundFromBegin(int id){
 
     std::string scene = std::string("play ") + std::string(mapSoundScene[id]) + std::string(" from 0");
     mciSendString(TEXT(scene.c_str()), NULL, 0, NULL);
+}
+
+void Story::pauseSound(int id){
+
+    std::string scene = std::string("pause ") + std::string(mapSoundScene[id]);
+    mciSendString(TEXT(scene.c_str()), NULL, 0, NULL);
+}
+
+void Story::resumeSound(int id){
+
+    std::string scene = std::string("resume ") + std::string(mapSoundScene[id]);
+    mciSendString(TEXT(scene.c_str()), NULL, 0, NULL);
+}
+
+void Story::on_pushButton_3_clicked()
+{
+
+
+
+    if (soundOn){
+        waveOutSetVolume(NULL, 0); // mute volume
+        ui->pushButton_3->setText("X4");
+    }
+    else{
+        ui->pushButton_3->setText("X;");
+        waveOutSetVolume(NULL, 0xFFFF);
+    }
+    soundOn=!soundOn;
+
 }

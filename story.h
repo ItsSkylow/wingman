@@ -57,6 +57,8 @@ private slots:
 
     void on_radioButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     double delayPrintText = 7000.;
     Ui::Story *ui;
@@ -70,10 +72,14 @@ private:
     void initSounds();
     void playSound(int id);
     void stopSound(int id);
+    void pauseSound(int id);
+    void resumeSound(int id);
     void playSoundFromBegin(int id);
     void stopAllSound();
 
     QSoundEffect *sound;
+    bool soundOn = true;
+    DWORD dwVolume;
 };
 
 #endif // STORY_H

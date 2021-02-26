@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     playSound();
+    waveOutSetVolume(NULL, 0xFFFF);
     ui->setupUi(this);
 }
 
