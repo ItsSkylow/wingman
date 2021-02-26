@@ -10,6 +10,7 @@
 
 void Story::firstScene(){
     this->maxLabelInCurrentScene = 3;
+    this->playSound(1);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url('C://Users//M2IHM//Desktop//ProjetSahri/Images//SahriScene1.jpg')}");
     this->mHaptique->GetFogEffect()->Start();
     this->displayText("Il etait une fois, dans une contree eloigne, a une epoque que le temps a effacer de la memoire des hommes...");
@@ -20,7 +21,8 @@ void Story::firstScene(){
 }
 
 void Story::secondScene(){
-    this->maxLabelInCurrentScene = 8;
+    this->maxLabelInCurrentScene = 7;
+    this->playSound(2);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert brume.png')}");
     this->displayText("Un jour, alors que tout était calme, le jeune Sahri rencontra un homme tout de blanc vêtu. ");
     this->clearMapTimer();
@@ -35,6 +37,7 @@ void Story::secondScene(){
 
 void Story::thirdScene(){
     this->maxLabelInCurrentScene = 6;
+    this->playSound(3);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/CitySahri.jpg')}");
     this->displayText("\"Elle a été victime d'une malédiction, jadis notre peuple vivait en paix\"");
     this->clearMapTimer();
@@ -48,6 +51,7 @@ void Story::thirdScene(){
 
 void Story::fourthScene(){
     this->maxLabelInCurrentScene = 8;
+    this->playSound(4);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert.png')}");
     this->displayText("Le jeune Sahri s'approcha alors, comme si sa destinée s'accomplissait");
     mHaptique->GetPasEffect()->Start();
@@ -64,6 +68,7 @@ void Story::fourthScene(){
 
 void Story::fifthScene(){
     this->maxLabelInCurrentScene = 1;
+    this->playSound(5);
     this->centralWidget()->setStyleSheet("QWidget#storyBackground {background-image: url(':images/Images/desert vide.png')}");
     this->displayText("Ainsi le sable et le vent, séparés par le temps et l'oubli étaient réunis.");
     this->clearMapTimer();
@@ -77,6 +82,9 @@ Story::Story(QWidget *parent) :
 {
     //Setup de l interface -- doit etre au debut
     ui->setupUi(this);
+        
+    //Initialisation des sons
+    this->initSounds();
 
     //Initialisation de l haptique
     this->mHaptique = new GestionHaptique(this);
@@ -90,7 +98,7 @@ Story::Story(QWidget *parent) :
     ui->storyLabel->setWordWrap(true);
 
     //Lancement de la firstScene
-    this->firstScene();
+    // this->firstScene();
 
     //Stockage des scenes dans la map
     mapStory[0]= &Story::firstScene;
@@ -254,9 +262,48 @@ void Story::on_radioButton_clicked()
     ui->storyLabel->setFont(font);
 }
 
+
 void Story::on_radioButton_2_clicked()
 {
 
     QFont font = QFont("Arial",20,10);
     ui->storyLabel->setFont(font);
+}
+
+void Story::initSounds(){ //Open all sounds
+
+    mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene1.mp3\" type mpegvideo alias Scene1"), NULL, 0, NULL);
+    mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene2.mp3\" type mpegvideo alias Scene2"), NULL, 0, NULL);
+    mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene3.mp3\" type mpegvideo alias Scene3"), NULL, 0, NULL);
+    mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene4.mp3\" type mpegvideo alias Scene4"), NULL, 0, NULL);
+    mciSendString(TEXT("open \"C:\\Users\\M2IHM\\Desktop\\ProjetSahri\\SoundEffect\\Scenes\\mp3\\Transformed\\Scene5.mp3\" type mpegvideo alias Scene5"), NULL, 0, NULL);
+    mapSoundScene[1]="Scene1";
+    mapSoundScene[2]="Scene2";
+    mapSoundScene[3]="Scene3";
+    mapSoundScene[4]="Scene4";
+    mapSoundScene[5]="Scene5";
+
+}
+
+void Story::playSound(int id){ //Ouvrir le son de la musique
+    std::string scene = std::string("play ") + std::string(mapSoundScene[id]);
+    mciSendString(TEXT(scene.c_str()), NULL, 0, NULL);
+}
+
+void Story::stopSound(int id){ //Arreter le son de la musique
+    std::string scene = std::string("stop ") + std::string(mapSoundScene[id]);
+    mciSendString(TEXT(scene.c_str()), NULL, 0, NULL);
+}
+
+void Story::stopAllSound(){ //Arreter le son de la musique
+    for (std::map<int, const char*>::iterator it = mapSoundScene.begin(); it != mapSoundScene.end(); ++it)
+    {
+        this->stopSound(it->first);
+    }
+}
+
+void Story::playSoundFromBegin(int id){
+
+    std::string scene = std::string("play ") + std::string(mapSoundScene[id]) + std::string(" from 0");
+    mciSendString(TEXT(scene.c_str()), NULL, 0, NULL);
 }
