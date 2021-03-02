@@ -1,0 +1,193 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Scene4_data" version="1.3.0" audacityversion="2.4.2" sel0="42.4737291667" sel1="42.4737291667" vpos="0" h="0.0000000000" zoom="22.3129461078" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="Scene4" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="2709687">
+				<waveblock start="0">
+					<simpleblockfile filename="e080881c.au" len="261039" min="-0.426797" max="0.515288" rms="0.04556"/>
+				</waveblock>
+				<waveblock start="261039">
+					<simpleblockfile filename="e0808610.au" len="262144" min="-0.17128" max="0.143544" rms="0.022523"/>
+				</waveblock>
+				<waveblock start="523183">
+					<simpleblockfile filename="e08083ac.au" len="262144" min="-0.152475" max="0.1264" rms="0.022151"/>
+				</waveblock>
+				<waveblock start="785327">
+					<simpleblockfile filename="e0808b0a.au" len="262144" min="-0.279721" max="0.240912" rms="0.03524"/>
+				</waveblock>
+				<waveblock start="1047471">
+					<simpleblockfile filename="e0808274.au" len="262144" min="-0.425202" max="0.416011" rms="0.057523"/>
+				</waveblock>
+				<waveblock start="1309615">
+					<simpleblockfile filename="e0808167.au" len="262144" min="-0.458503" max="0.451784" rms="0.047101"/>
+				</waveblock>
+				<waveblock start="1571759">
+					<simpleblockfile filename="e08083c1.au" len="262144" min="-0.130233" max="0.124557" rms="0.015608"/>
+				</waveblock>
+				<waveblock start="1833903">
+					<simpleblockfile filename="e0808ac7.au" len="262144" min="-0.221813" max="0.236184" rms="0.027528"/>
+				</waveblock>
+				<waveblock start="2096047">
+					<simpleblockfile filename="e080806e.au" len="262144" min="-0.354535" max="0.432322" rms="0.038379"/>
+				</waveblock>
+				<waveblock start="2358191">
+					<simpleblockfile filename="e08081b8.au" len="175748" min="-0.398995" max="0.401998" rms="0.049837"/>
+				</waveblock>
+				<waveblock start="2533939">
+					<simpleblockfile filename="e0808e93.au" len="175748" min="-0.285311" max="0.315888" rms="0.050195"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="bruit-de-pas" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="5.011872" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="215431">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808748.au" len="215431" min="-0.060291" max="0.051787" rms="0.001439"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="bruit-de-pas" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="5.011872" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="215431">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808a28.au" len="215431" min="-0.078416" max="0.079191" rms="0.002138"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="orage-foudre-eclair-impact-tonnerre" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="48000" gain="0.089125" pan="0.0" colorindex="0">
+		<waveclip offset="18.95760077" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="716356">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808511.au" len="208464" min="-0.667882" max="0.60446" rms="0.106346"/>
+				</waveblock>
+				<waveblock start="208464">
+					<simpleblockfile filename="e0808c38.au" len="262144" min="-1.30612" max="1.398319" rms="0.405284"/>
+				</waveblock>
+				<waveblock start="470608">
+					<simpleblockfile filename="e08088de.au" len="245748" min="-1.064327" max="1.006997" rms="0.16526"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="orage-foudre-eclair-impact-tonnerre" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="48000" gain="0.089125" pan="0.0" colorindex="0">
+		<waveclip offset="18.95760077" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="716356">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808f0e.au" len="208464" min="-0.595494" max="0.523073" rms="0.091807"/>
+				</waveblock>
+				<waveblock start="208464">
+					<simpleblockfile filename="e080836c.au" len="262144" min="-1.280606" max="1.321298" rms="0.368087"/>
+				</waveblock>
+				<waveblock start="470608">
+					<simpleblockfile filename="e0808026.au" len="245748" min="-1.000444" max="0.980565" rms="0.142006"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="pluie-sur-une-tente-pour-dormir-relaxer-apaiser-mediter-30-minutes" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="2381223">
+				<waveblock start="0">
+					<simpleblockfile filename="e0802bd9.au" len="182000" min="-0.000214" max="0.000172" rms="0.000006"/>
+				</waveblock>
+				<waveblock start="182000">
+					<simpleblockfile filename="e08022c3.au" len="182000" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="364000">
+					<simpleblockfile filename="e08027f3.au" len="182001" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="546001">
+					<silentblockfile len="262144"/>
+				</waveblock>
+				<waveblock start="808145">
+					<silentblockfile len="262144"/>
+				</waveblock>
+				<waveblock start="1070289">
+					<simpleblockfile filename="e08023bf.au" len="182678" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="1252967">
+					<simpleblockfile filename="e0802ae3.au" len="182679" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="1435646">
+					<simpleblockfile filename="e0802492.au" len="182679" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="1618325">
+					<silentblockfile len="262144"/>
+				</waveblock>
+				<waveblock start="1880469">
+					<simpleblockfile filename="e0802a4b.au" len="171291" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="2051760">
+					<simpleblockfile filename="e0802ac6.au" len="199184" min="-0.057078" max="0.076832" rms="0.004867"/>
+				</waveblock>
+				<waveblock start="2250944">
+					<simpleblockfile filename="e0802524.au" len="130279" min="-0.093765" max="0.103782" rms="0.008266"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="pluie-sur-une-tente-pour-dormir-relaxer-apaiser-mediter-30-minutes" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="2381223">
+				<waveblock start="0">
+					<simpleblockfile filename="e08027de.au" len="182000" min="-0.000158" max="0.000195" rms="0.000007"/>
+				</waveblock>
+				<waveblock start="182000">
+					<simpleblockfile filename="e08024ce.au" len="182000" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="364000">
+					<simpleblockfile filename="e08024c7.au" len="182001" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="546001">
+					<silentblockfile len="262144"/>
+				</waveblock>
+				<waveblock start="808145">
+					<silentblockfile len="262144"/>
+				</waveblock>
+				<waveblock start="1070289">
+					<simpleblockfile filename="e080286e.au" len="182678" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="1252967">
+					<simpleblockfile filename="e0802780.au" len="182679" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="1435646">
+					<simpleblockfile filename="e0802a3b.au" len="182679" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="1618325">
+					<silentblockfile len="262144"/>
+				</waveblock>
+				<waveblock start="1880469">
+					<simpleblockfile filename="e080249d.au" len="171291" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+				<waveblock start="2051760">
+					<simpleblockfile filename="e080208d.au" len="199184" min="-0.055297" max="0.067802" rms="0.005395"/>
+				</waveblock>
+				<waveblock start="2250944">
+					<simpleblockfile filename="e08024f7.au" len="130279" min="-0.069851" max="0.071364" rms="0.009115"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="donnerre2" isSelected="1" height="150" minimized="0" channel="2" linked="0" mute="0" solo="0" rate="48000" gain="0.281838" pan="0.0" colorindex="0">
+		<waveclip offset="42.47372917" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="149052">
+				<waveblock start="0">
+					<simpleblockfile filename="e0802a3d.au" len="149052" min="-0.855871" max="0.864979" rms="0.163862"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
