@@ -80,6 +80,7 @@ Story::Story(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Story)
 {
+
     //Setup de l interface -- doit etre au debut
     ui->setupUi(this);
         
@@ -98,7 +99,7 @@ Story::Story(QWidget *parent) :
     ui->storyLabel->setWordWrap(true);
 
     //Lancement de la firstScene
-    // this->firstScene();
+     this->firstScene();
 
     //Stockage des scenes dans la map
     mapStory[0]= &Story::firstScene;
@@ -146,8 +147,9 @@ void Story::displayText(const char* chaine){
 
 void Story::on_pushButton_clicked() //Bouton Retour
 {
-    this->stopAllSound();
-    this->playSoundFromBegin(currentPage+1);
+
+    qDebug() << currentPage;
+    this->lastSceneId = currentPage;
     if(currentPage > 0){
         currentPage--;
         (this->*mapStory[currentPage])();
@@ -164,8 +166,9 @@ void Story::on_pushButton_clicked() //Bouton Retour
 
 void Story::on_pushButton_2_clicked() //Bouton suivant
 {
-    this->stopAllSound();
-    this->playSoundFromBegin(currentPage+1);
+
+    qDebug() << currentPage;
+    this->lastSceneId = currentPage;
     if(currentPage < mapStory.size()-1){
         currentPage++;
         (this->*mapStory[currentPage])();
@@ -245,19 +248,21 @@ void Story::clearMapTimer(){
 
 void Story::on_spinPage_editingFinished()
 {
+    //    this->stopAllSound();
 
+        this->lastSceneId = currentPage;
+        if(ui->spinPage->value() <= mapStory.size() && ui->spinPage->value() > 0){
+            currentPage = ui->spinPage->value() - 1;
+            (this->*mapStory[currentPage])();
+        }
+    //    this->playSoundFromBegin(currentPage+1);
+        ui->pushButton->setStyleSheet(styleSheet());
+        ui->pushButton_2->setStyleSheet(styleSheet());
 }
 
 void Story::on_spinPage_valueChanged(int arg1)
 {
-    this->stopAllSound();
-    if(ui->spinPage->value() <= mapStory.size() && ui->spinPage->value() > 0){
-        currentPage = ui->spinPage->value() - 1;
-        (this->*mapStory[currentPage])();
-    }
-    this->playSoundFromBegin(currentPage+1);
-    ui->pushButton->setStyleSheet(styleSheet());
-    ui->pushButton_2->setStyleSheet(styleSheet());
+
 }
 
 void Story::on_radioButton_clicked()
@@ -290,11 +295,15 @@ void Story::initSounds(){ //Open all sounds
 }
 
 void Story::playSound(int id){ //Ouvrir le son de la musique
+    this->stopSound(lastSceneId+1);
+    Sleep(1000);
     std::string scene = std::string("play ") + std::string(mapSoundScene[id]);
+    qDebug() << "Play scene " << id;
     mciSendString(TEXT(scene.c_str()), NULL, 0, NULL);
 }
 
 void Story::stopSound(int id){ //Arreter le son de la musique
+    qDebug() << "STOP SOUND " << id;
     std::string scene = std::string("stop ") + std::string(mapSoundScene[id]);
     mciSendString(TEXT(scene.c_str()), NULL, 0, NULL);
 }
@@ -307,8 +316,10 @@ void Story::stopAllSound(){ //Arreter le son de la musique
 }
 
 void Story::playSoundFromBegin(int id){
-
+    this->stopSound(lastSceneId+1);
+    Sleep(1000);
     std::string scene = std::string("play ") + std::string(mapSoundScene[id]) + std::string(" from 0");
+    qDebug() << "Play scene from begin " << id;
     mciSendString(TEXT(scene.c_str()), NULL, 0, NULL);
 }
 

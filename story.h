@@ -80,6 +80,8 @@ private:
     QSoundEffect *sound;
     bool soundOn = true;
     DWORD dwVolume;
+    bool isPlaying = false;
+    int lastSceneId = 0;
 };
 
 #endif // STORY_H

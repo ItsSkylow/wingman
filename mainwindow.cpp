@@ -41,8 +41,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_DebuterVoyage_clicked()
 {
     this->close();
+    stopSound();
     Story *w = new Story();
     w->show();
-    stopSound();
+    Sleep(1000);
 
 }
